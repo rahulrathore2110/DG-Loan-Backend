@@ -18,6 +18,12 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @GetMapping("/welcome")
+    public String testHandler() {
+        return "Your application working properly";
+    }
+
+
     @PostMapping("/")
     public ResponseEntity<String> createCustomerHandler(@Valid @RequestBody Customer customer) {
         String createCustomer = this.customerService.createCustomer(customer);

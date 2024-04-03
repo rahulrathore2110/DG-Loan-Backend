@@ -1,0 +1,38 @@
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    environment:
+      MYSQL_DATABASE: loan
+      MYSQL_ROOT_PASSWORD: 2110
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-db:/var/lib/mysql
+    networks:
+      - dgbazar
+    restart: always
+
+  dgloan:
+    container_name: dgloan
+    image: rahulg27727/dgloan:latest
+    ports:
+      - "8088:8088"
+    networks:
+      - dgbazar
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_DB_NAME: loan
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 2110
+
+    depends_on:
+      - mysqldb
+    restart: unless-stopped
+
+volumes:
+  mysql-db:
+
+networks:
+  dgbazar:
+    driver: bridge
