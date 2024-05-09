@@ -22,13 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public String createCustomer(Customer customer) {
+    public Customer createCustomer(Customer customer) {
         List<String> remark = new ArrayList<>();
         remark.add(LocalDateTime.now() + " : " + "New Customer Created");
         customer.setCreatedDate(LocalDateTime.now());
         customer.setLastUpdated(remark);
         Customer savedCustomer = this.customerDao.save(customer);
-        return "User Create Successfully. Your Customer ID is : " + customer.getCId();
+        return savedCustomer;
     }
 
     @Override

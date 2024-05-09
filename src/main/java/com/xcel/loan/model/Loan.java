@@ -25,7 +25,7 @@ public class Loan {
     private int interestRate;
     private int monthlyEmi;
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<EMI> allEmi;
     private int tenure;
     private int noOfEmiPaid;

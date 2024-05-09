@@ -1,6 +1,7 @@
 package com.xcel.loan.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,6 @@ public class EMI {
     private int emiPenalty;
     private Status emiStatus;
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Loan loan;
 }

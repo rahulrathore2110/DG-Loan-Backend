@@ -25,8 +25,8 @@ public class CustomerController {
 
 
     @PostMapping("/")
-    public ResponseEntity<String> createCustomerHandler(@Valid @RequestBody Customer customer) {
-        String createCustomer = this.customerService.createCustomer(customer);
+    public ResponseEntity<Customer> createCustomerHandler(@Valid @RequestBody Customer customer) {
+        Customer createCustomer = this.customerService.createCustomer(customer);
         return new ResponseEntity<>(createCustomer, HttpStatus.CREATED);
     }
 
